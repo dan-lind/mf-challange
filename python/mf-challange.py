@@ -16,22 +16,22 @@ print ''
 print '--------- Optimal Buy/Sell for close ----------'
 print 'Buy at close price ' + df.close.min() + ' on ' + str(df.close.idxmin())
 print 'Sell at close price ' + df.close.max() + ' on ' + str(df.close.idxmax())
-print' Profit: ' + str(float(df.close.max()) - float(df.close.min())) + ' SEK per share'
+print 'Profit: ' + str(float(df.close.max()) - float(df.close.min())) + ' SEK per share'
 print ''
 print '--------- Optimal Buy/Sell for low/high ----------'
 print 'Buy at low price ' + df.low.min() + ' on ' + str(df.low.idxmin())
 print 'Sell at high price ' + df.high.max() + ' on ' + str(df.high.idxmax())
-print' Profit: ' + str(float(df.high.max()) - float(df.low.min())) + ' SEK per share'
+print 'Profit: ' + str(float(df.high.max()) - float(df.low.min())) + ' SEK per share'
 
 plt.plot_date(df.index,df.close,ls='-',marker=' ')
 plt.plot(df.close.idxmin(),float(df.close.min()), marker='o')
 plt.plot(df.close.idxmax(),float(df.close.max()), marker='o')
 
-plt.annotate('Buy ' + df.close.idxmin().strftime("%Y-%m-%d"), xy=(df.close.idxmin(),float(df.close.min())), xytext=(df.close.idxmin(),float(df.close.min())-30),
-            arrowprops=dict(facecolor='black', shrink=0.05), horizontalalignment='center',
+plt.annotate('Buy ' + df.close.idxmin().strftime("%Y-%m-%d") + ' at ' + df.close.min(), xy=(df.close.idxmin(),float(df.close.min())), xytext=(df.close.idxmin() + timedelta(days=20),float(df.close.min())-30),
+            arrowprops=dict(facecolor='black', shrink=0.05), horizontalalignment='left',
             )
-plt.annotate('Sell ' + df.close.idxmax().strftime("%Y-%m-%d"), xy=(df.close.idxmax(),float(df.close.max())), xytext=(df.close.idxmax() - timedelta(days=10),float(df.close.max())+30),
-            arrowprops=dict(facecolor='black', shrink=0.05), horizontalalignment='center',
+plt.annotate('Sell ' + df.close.idxmax().strftime("%Y-%m-%d" + ' at ' + df.close.max()), xy=(df.close.idxmax(),float(df.close.max())), xytext=(df.close.idxmax() - timedelta(days=25),float(df.close.max())+30),
+            arrowprops=dict(facecolor='black', shrink=0.05), horizontalalignment='right',
             )
 plt.title("Hexagon B")
 plt.ylabel('Price SEK')

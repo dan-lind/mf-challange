@@ -4,7 +4,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 
@@ -14,3 +13,6 @@ hs_err_pid*
 .idea/
 java/.idea
 *.iml
+
+java/target/*
+!java/target/solution-1.0-SNAPSHOT-fat.jar
