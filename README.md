@@ -29,4 +29,4 @@ python mf-challange.py
 Vid körning visas en figur med optimal köpkurs och datum, säljkurs och datum baserat baserat på close.
 Denna information skrivs också ut i konsollen, samt vinst per aktie.
 Om man istället för close tittar på köp vid lägsta low och sälj vid högsta high så får vi andra datum och lite bättre köp och säljkurs, 
-även denna info skrivs ut för denna lösning.
+även denna info skrivs ut.
