@@ -1,5 +1,8 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 /**
@@ -7,41 +10,36 @@ import java.util.List;
  */
 public class Puzzle {
 
-    private String puzzle;
-    private String info;
-    private String submission;
-    private List<Quote> data;
+    @JsonCreator
+    public Puzzle(@JsonProperty("puzzle") String puzzle,
+                  @JsonProperty("info") String info,
+                  @JsonProperty("submission") String submission,
+                  @JsonProperty("data") List<Quote> data) {
+        this.puzzle = puzzle;
+        this.info = info;
+        this.submission = submission;
+        this.data = data;
+    }
+
+    private final String puzzle;
+    private final String info;
+    private final String submission;
+    private final List<Quote> data;
 
     public List<Quote> getData() {
         return data;
-    }
-
-    public void setData(List<Quote> data) {
-        this.data = data;
     }
 
     public String getSubmission() {
         return submission;
     }
 
-    public void setSubmission(String submission) {
-        this.submission = submission;
-    }
-
     public String getInfo() {
         return info;
     }
 
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
     public String getPuzzle() {
         return puzzle;
-    }
-
-    public void setPuzzle(String puzzle) {
-        this.puzzle = puzzle;
     }
 
 }

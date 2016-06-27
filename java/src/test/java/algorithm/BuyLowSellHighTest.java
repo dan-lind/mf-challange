@@ -1,3 +1,5 @@
+package algorithm;
+
 import algorithm.BuyLowSellHigh;
 import model.Analysis;
 import model.Quote;
@@ -23,23 +25,11 @@ public class BuyLowSellHighTest {
 
     @Before
     public void setUp() {
-        Quote quote1 = new Quote();
-        Quote quote2 = new Quote();
-        Quote quote3 = new Quote();
-        Quote quote4 = new Quote();
-        Quote quote5 = new Quote();
-
-        quote1.setClose(BigDecimal.valueOf(20));
-        quote2.setClose(BigDecimal.valueOf(21));
-        quote3.setClose(BigDecimal.valueOf(22));
-        quote4.setClose(BigDecimal.valueOf(23));
-        quote5.setClose(BigDecimal.valueOf(24));
-
-        quote1.setQuoteDate(date);
-        quote2.setQuoteDate(date.plusDays(1));
-        quote3.setQuoteDate(date.plusDays(2));
-        quote4.setQuoteDate(date.plusDays(3));
-        quote5.setQuoteDate(date.plusDays(4));
+        Quote quote1 = new Quote(date, "TestPaper", "TestExchange", BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE, BigDecimal.valueOf(20), 1L, 1L);
+        Quote quote2 = new Quote(date.plusDays(1), "TestPaper", "TestExchange", BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE, BigDecimal.valueOf(21), 1L, 1L);;
+        Quote quote3 = new Quote(date.plusDays(2), "TestPaper", "TestExchange", BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE, BigDecimal.valueOf(22), 1L, 1L);;
+        Quote quote4 = new Quote(date.plusDays(3), "TestPaper", "TestExchange", BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE, BigDecimal.valueOf(23), 1L, 1L);;
+        Quote quote5 = new Quote(date.plusDays(4), "TestPaper", "TestExchange", BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE, BigDecimal.valueOf(24), 1L, 1L);;
 
         data.add(quote1);
         data.add(quote2);
@@ -56,19 +46,12 @@ public class BuyLowSellHighTest {
         Assert.assertEquals(date.plusDays(4), analysis.getSellDate());
         Assert.assertEquals(BigDecimal.valueOf(20), analysis.getBuyPrice());
         Assert.assertEquals(BigDecimal.valueOf(24), analysis.getSellPrice());
-
     }
 
     @Test
     public void findBuyAndSellCloseTestLate() {
-        Quote quote6 = new Quote();
-        Quote quote7 = new Quote();
-
-        quote6.setClose(BigDecimal.valueOf(1));
-        quote7.setClose(BigDecimal.valueOf(15));
-
-        quote6.setQuoteDate(date.plusDays(5));
-        quote7.setQuoteDate(date.plusDays(6));
+        Quote quote6 = new Quote(date.plusDays(5), "TestPaper", "TestExchange", BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE, BigDecimal.valueOf(1), 1L, 1L);;
+        Quote quote7 = new Quote(date.plusDays(6), "TestPaper", "TestExchange", BigDecimal.ONE, BigDecimal.ONE, BigDecimal.ONE, BigDecimal.valueOf(15), 1L, 1L);;
 
         data.add(quote6);
         data.add(quote7);
